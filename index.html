@@ -3,25 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Research SLAM — pick your topic</title>
+<title>Research SLAM — pick your project</title>
 <link rel="stylesheet" href="slam.css">
+<style>
+/* ---- voting UI (landing only) ---- */
+.steps{counter-reset:s;max-width:760px;margin:1.2rem auto 0;padding:0 1.1rem;}
+.steps li{list-style:none;font-size:1.02rem;font-weight:600;margin:0.3rem 0;padding-left:2.4rem;position:relative;}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-1px;width:1.7rem;height:1.7rem;
+  background:var(--accent);color:#fff;border-radius:50%;font-size:0.95rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.tile{position:relative;}
+.tile .rankbadge{position:absolute;top:-0.6rem;left:-0.6rem;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--gold);
+  color:var(--ink);font-weight:800;font-size:1.1rem;display:none;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,.25);}
+.tile.ranked .rankbadge{display:flex;}
+.tile.ranked{border-color:var(--accent);background:var(--accent-soft);}
+.tile .actions{margin-left:auto;display:flex;gap:.5rem;flex:0 0 auto;}
+.btn{font-size:.92rem;font-weight:700;padding:.55rem .9rem;border-radius:9px;border:2px solid var(--accent);background:#fff;color:var(--accent);cursor:pointer;font-family:inherit;white-space:nowrap;}
+.btn.pick{background:var(--accent);color:#fff;}
+.btn.read{border-color:var(--rule);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;}
+.btn:disabled{opacity:.4;cursor:default;}
+.ballot{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--accent);box-shadow:0 -3px 12px rgba(0,0,0,.08);
+  padding:.9rem 1.1rem;z-index:20;}
+.ballot .inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.ballot .slots{display:flex;gap:.6rem;flex-wrap:wrap;flex:1;}
+.ballot .slot{font-size:.95rem;font-weight:700;background:var(--bg);border:1.5px dashed var(--rule);border-radius:9px;padding:.45rem .8rem;min-width:9rem;}
+.ballot .slot.filled{background:var(--accent-soft);border-style:solid;border-color:var(--accent);color:var(--accent);}
+.ballot .slot .r{color:var(--accent);font-weight:800;margin-right:.3rem;}
+.ballot .reset{font-size:.85rem;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
+.done{display:none;background:var(--ok-soft);border:2px solid var(--ok);border-radius:12px;padding:1rem 1.2rem;margin:0 auto;max-width:760px;}
+.done.show{display:block;}
+.done h3{color:var(--ok);font-size:1.1rem;margin-bottom:.3rem;}
+.done b{color:var(--ok);}
+.tile .t small{margin-top:.1rem;}
+</style>
 </head>
 <body>
 <main>
   <div class="hero">
     <h1>Research SLAM</h1>
-    <p>SLAC · Monday, June 8 · pick your question, open your page</p>
+    <p>Pick your project · SLAC · Monday, June 8</p>
   </div>
 
-  <div class="grid">
-    <a class="tile" href="1_sewage.html"><span class="n">1</span><span class="t">Is sewage actually liquid gold?<small>Pulling treasure out of dirty water</small></span></a>
-    <a class="tile" href="2_vacuum.html"><span class="n">2</span><span class="t">Why must SLAC's machine be emptier than outer space?<small>The science of ultra-high vacuum</small></span></a>
-    <a class="tile" href="3_beam.html"><span class="n">3</span><span class="t">How do you aim a beam at a target thinner than a hair?<small>Steering particles with magnets</small></span></a>
-    <a class="tile" href="4_bone.html"><span class="n">4</span><span class="t">Can you teach bone to grow onto plastic?<small>Designing implants the body accepts</small></span></a>
-    <a class="tile" href="5_materials.html"><span class="n">5</span><span class="t">How does a material decide to break?<small>Catching failure in the act, with X-rays</small></span></a>
+  <ol class="steps">
+    <li>Tap a project to <b>read about it</b> (then come back).</li>
+    <li>Pick your <b>Top 3</b> with the <b>★ Pick</b> buttons.</li>
+    <li>Write your Top 3 <b>+ your name</b> on a card and drop it in the box.</li>
+    <li>Find out your team — and meet your scientist!</li>
+  </ol>
+
+  <div class="grid" id="grid">
+    <div class="tile" data-id="1" data-short="Liquid gold">
+      <span class="rankbadge"></span><span class="n">1</span>
+      <span class="t">Is sewage actually liquid gold?<small>Pulling treasure out of dirty water</small></span>
+      <span class="actions"><a class="btn read" href="1_sewage.html">Read</a><button class="btn pick" data-pick>★ Pick</button></span>
+    </div>
+    <div class="tile" data-id="2" data-short="Emptier than space">
+      <span class="rankbadge"></span><span class="n">2</span>
+      <span class="t">Why must SLAC's machine be emptier than outer space?<small>The science of ultra-high vacuum</small></span>
+      <span class="actions"><a class="btn read" href="2_vacuum.html">Read</a><button class="btn pick" data-pick>★ Pick</button></span>
+    </div>
+    <div class="tile" data-id="3" data-short="Aiming the beam">
+      <span class="rankbadge"></span><span class="n">3</span>
+      <span class="t">How do you aim a beam at a target thinner than a hair?<small>Steering particles with magnets</small></span>
+      <span class="actions"><a class="btn read" href="3_beam.html">Read</a><button class="btn pick" data-pick>★ Pick</button></span>
+    </div>
+    <div class="tile" data-id="4" data-short="Bone on plastic">
+      <span class="rankbadge"></span><span class="n">4</span>
+      <span class="t">Can you teach bone to grow onto plastic?<small>Designing implants the body accepts</small></span>
+      <span class="actions"><a class="btn read" href="4_bone.html">Read</a><button class="btn pick" data-pick>★ Pick</button></span>
+    </div>
+    <div class="tile" data-id="5" data-short="How materials break">
+      <span class="rankbadge"></span><span class="n">5</span>
+      <span class="t">How does a material decide to break?<small>Catching failure in the act, with X-rays</small></span>
+      <span class="actions"><a class="btn read" href="5_materials.html">Read</a><button class="btn pick" data-pick>★ Pick</button></span>
+    </div>
   </div>
 
-  <p class="footnote">Each page has your reading, your video, and your math — all in one place.<br>Open your team's topic. Keep scratch paper handy for the Wow Hunt and your SLAM.</p>
+  <div class="done" id="done">
+    <h3>✅ Your Top 3 is set!</h3>
+    <div id="doneList" style="font-size:1.05rem;font-weight:700;margin:.3rem 0;"></div>
+    <div>Now <b>write these three + your name on a card</b> and drop it in the box. Then sit tight — we'll tell you your team and your scientist.</div>
+  </div>
+
+  <p class="footnote">You're guaranteed one of your top 3. Each topic page also has your reading, video, and math for later.</p>
 </main>
+
+<div class="ballot">
+  <div class="inner">
+    <strong style="flex:0 0 auto;">My Top&nbsp;3:</strong>
+    <div class="slots" id="slots">
+      <span class="slot" data-s="0"><span class="r">1</span>—</span>
+      <span class="slot" data-s="1"><span class="r">2</span>—</span>
+      <span class="slot" data-s="2"><span class="r">3</span>—</span>
+    </div>
+    <button class="reset" id="reset">reset</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var ranks=[]; // topic ids in pick order, max 3
+  var tiles=[].slice.call(document.querySelectorAll('.tile'));
+  var slots=[].slice.call(document.querySelectorAll('.slot'));
+  var shortFor={};
+  tiles.forEach(function(t){ shortFor[t.dataset.id]=t.dataset.short; });
+
+  function render(){
+    tiles.forEach(function(t){
+      var id=t.dataset.id, pos=ranks.indexOf(id);
+      var badge=t.querySelector('.rankbadge'), btn=t.querySelector('[data-pick]');
+      if(pos>=0){ t.classList.add('ranked'); badge.textContent=pos+1; btn.textContent='Remove'; btn.classList.remove('pick'); btn.disabled=false; }
+      else{ t.classList.remove('ranked'); btn.textContent='★ Pick'; btn.classList.add('pick'); btn.disabled=(ranks.length>=3); }
+    });
+    slots.forEach(function(s,i){
+      if(ranks[i]){ s.classList.add('filled'); s.innerHTML='<span class="r">'+(i+1)+'</span>'+shortFor[ranks[i]]; }
+      else{ s.classList.remove('filled'); s.innerHTML='<span class="r">'+(i+1)+'</span>—'; }
+    });
+    var done=document.getElementById('done');
+    if(ranks.length===3){
+      done.classList.add('show');
+      document.getElementById('doneList').textContent = ranks.map(function(id,i){return (i+1)+') '+shortFor[id];}).join('   ');
+    } else done.classList.remove('show');
+  }
+  tiles.forEach(function(t){
+    t.querySelector('[data-pick]').addEventListener('click',function(){
+      var id=t.dataset.id, pos=ranks.indexOf(id);
+      if(pos>=0) ranks.splice(pos,1);
+      else if(ranks.length<3) ranks.push(id);
+      render();
+    });
+  });
+  document.getElementById('reset').addEventListener('click',function(){ ranks=[]; render(); });
+  render();
+})();
+</script>
 </body>
 </html>
