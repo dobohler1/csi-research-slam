@@ -39,20 +39,19 @@
 
 <script>
 window.TOPIC = { math: {
-  mission: "Why does making a material porous change everything? Find out with a cube.",
-  setup: "Your scientist got you started this morning — finish the steps. (Self-check is built in.)",
+  mission: "\"Porous\" means full of tiny holes — and holes create surface for bone to grab onto. How much MORE surface do you get? Measure it with cubes.",
+  setup: "The idea: break a solid block into tiny pieces and the outside surface explodes — even though it's the same material. Your scientist got you started this morning; finish the steps.",
   given: [
-    "A solid cube, 1 cm on each side: surface area = 6 sides × 1 cm² = <b>6 cm²</b>",
-    "Cut it into mini-cubes <b>1 mm</b> (0.1 cm) on each side",
-    "Each tiny mini-cube has a surface of <b>0.06 cm²</b> (that's 6 × 0.1 × 0.1)"
+    "Start with one solid cube, 1 cm on each side. Its surface = 6 faces × (1 cm × 1 cm) = <b>6 cm²</b>.",
+    "Now chop it into tiny cubes, each <b>1 mm</b> (= 0.1 cm) on a side. That's what making it porous does."
   ],
   steps: [
-    { q: "How many mini-cubes do you get?  10 × 10 × 10 = ?", answer: 1000, tol: 0, unit: "cubes", hint: "10 across × 10 down × 10 deep." },
-    { q: "Total surface of all of them:  1000 × 0.06 = ?", answer: 60, tol: 1, unit: "cm²", hint: "Multiply the number of cubes by 0.06." },
-    { q: "How many times MORE surface, same material?  your total ÷ 6 = ?", answer: 10, tol: 0.5, unit: "× more", hint: "Divide your total surface by the original 6 cm²." }
+    { q: "How many tiny cubes fit inside the big one?  10 across × 10 down × 10 deep = ?", answer: 1000, tol: 0, unit: "cubes", hint: "Multiply 10 × 10 × 10." },
+    { q: "Each tiny cube has 6 faces of 0.1 × 0.1 = 0.01 cm², so <b>0.06 cm²</b> per cube. Add up all your cubes:  (number of cubes) × 0.06 = ?", answer: 60, tol: 1, unit: "cm²", hint: "Multiply your 1,000 cubes by 0.06 cm² each." },
+    { q: "You started with 6 cm² of surface. Now you have your new total. How many times more?  (your total) ÷ 6 = ?", answer: 10, tol: 0.5, unit: "× more", hint: "Divide your total surface by the original 6 cm²." }
   ],
-  final: { say: 'Same plastic, <span class="num">10× more surface</span> for bone cells to grab. That\'s why porosity is the whole game.', next: "Write your number BIG on an index card." },
-  deeper: "Now cut to 0.1 mm cubes — that's another 10×, so 100× the surface. Why might a cell care about texture at its own tiny size scale?"
+  final: { say: 'Same amount of plastic, <span class="num">10× more surface</span> for bone cells to grab onto. That\'s why porosity is the whole game.', next: "Write your number BIG on an index card." },
+  deeper: "Chop into even smaller 0.1 mm cubes and you get another 10× — so 100× the surface from the same material. Why might a bone cell care about texture at its own tiny size scale?"
 }};
 </script>
 <script src="slam.js"></script>
