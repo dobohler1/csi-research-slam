@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research SLAM — Run of Show (main screen)</title>
+<style>
+/* ============================================================
+   CSI Research SLAM — Day-of screen deck (project on main screen)
+   The MC advances slides as the day moves: → / Space / click = next,
+   ← = back, F = fullscreen, G = jump (type number). One slide per
+   block so the room always knows where we are and what's due.
+   Each <section class="slide"> = one slide (also html2slides-ready).
+   ============================================================ */
+:root{--ink:#161616;--accent:#8B0000;--accent2:#b11414;--gold:#FFC72C;--soft:#f7e8e8;--paper:#fff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#000;color:var(--ink);overflow:hidden;}
+.stage{position:fixed;inset:0;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;
+  padding:6vmin 8vmin;text-align:center;background:var(--paper);}
+.slide.active{display:flex;}
+.kicker{font-size:2.4vmin;font-weight:800;letter-spacing:0.5vmin;text-transform:uppercase;color:var(--accent);margin-bottom:3vmin;}
+.kicker .t{background:var(--accent);color:#fff;padding:0.6vmin 1.6vmin;border-radius:1vmin;}
+h1{font-size:9vmin;line-height:1.04;font-weight:800;letter-spacing:-0.1vmin;}
+h1 .q{color:var(--accent);}
+.sub{font-size:3.6vmin;line-height:1.4;margin-top:3.5vmin;max-width:80vw;color:#333;}
+.sub b{color:var(--accent);font-weight:800;}
+ol.topics{list-style:none;margin-top:3vmin;text-align:left;}
+ol.topics li{font-size:3.4vmin;font-weight:700;line-height:1.5;padding-left:5.5vmin;position:relative;margin:0.4vmin 0;}
+ol.topics li .n{position:absolute;left:0;color:var(--accent);font-weight:800;}
+.beats{margin-top:3vmin;text-align:left;}
+.beats .b{display:flex;gap:2.5vmin;align-items:baseline;font-size:3.1vmin;line-height:1.5;margin:0.5vmin 0;}
+.beats .b .tm{color:var(--accent);font-weight:800;width:13vmin;flex:0 0 auto;text-align:right;}
+.beats .b b{font-weight:800;}
+.pill{display:inline-block;margin-top:4vmin;background:var(--gold);border-radius:2vmin;padding:1.6vmin 3vmin;font-size:3vmin;font-weight:800;}
+.timeline{display:flex;flex-wrap:wrap;justify-content:center;gap:2vmin 3vmin;margin-top:4vmin;max-width:86vw;}
+.timeline .item{font-size:3vmin;font-weight:700;}
+.timeline .item .tm{color:var(--accent);font-weight:800;}
+.deliver{margin-top:5vmin;background:var(--gold);border-radius:2.5vmin;padding:3vmin 4vmin;font-size:4.2vmin;font-weight:800;line-height:1.3;max-width:84vw;}
+.deliver .lbl{display:block;font-size:2.4vmin;letter-spacing:0.4vmin;text-transform:uppercase;margin-bottom:1.2vmin;color:var(--accent);}
+.rules{list-style:none;margin-top:3vmin;text-align:left;}
+.rules li{font-size:4vmin;font-weight:700;line-height:1.55;padding-left:6vmin;position:relative;}
+.rules li::before{content:"›";position:absolute;left:1vmin;color:var(--accent);font-weight:800;}
+.awards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.6vmin;margin-top:4vmin;max-width:84vw;}
+.awards .a{background:var(--soft);color:var(--accent);font-size:2.8vmin;font-weight:800;border-radius:2vmin;padding:1.4vmin 2.4vmin;}
+.bignum{font-size:18vmin;font-weight:800;color:var(--accent);line-height:1;}
+
+/* dark / energy variants */
+.slide.dark{background:var(--accent);color:#fff;}
+.slide.dark h1{color:#fff;}
+.slide.dark h1 .q{color:var(--gold);}
+.slide.dark .kicker{color:var(--gold);}
+.slide.dark .kicker .t{background:var(--gold);color:var(--ink);}
+.slide.dark .sub{color:#ffeaea;}
+.slide.dark .sub b{color:var(--gold);}
+.slide.dark .deliver{background:rgba(255,255,255,0.12);color:#fff;border:0.4vmin solid var(--gold);}
+.slide.dark .deliver .lbl{color:var(--gold);}
+.slide.dark .rules li::before{color:var(--gold);}
+
+/* chrome: counter + hint */
+.counter{position:fixed;bottom:2.5vmin;right:3vmin;font-size:2vmin;font-weight:700;color:#bbb;z-index:5;}
+.slide.dark ~ .counter{color:rgba(255,255,255,0.6);}
+.hint{position:fixed;bottom:2.5vmin;left:3vmin;font-size:1.8vmin;color:#ccc;z-index:5;}
+.brand{position:fixed;top:2.5vmin;left:3vmin;font-size:2vmin;font-weight:800;letter-spacing:0.3vmin;color:var(--accent);text-transform:uppercase;z-index:5;}
+@media print{.slide{display:flex !important;position:relative;page-break-after:always;height:100vh;}.counter,.hint,.brand{display:none;}}
+</style>
+</head>
+<body>
+<div class="brand">Research SLAM</div>
+<div class="stage">
+
+  <!-- 1 WELCOME -->
+  <section class="slide dark">
+    <div class="kicker">SLAC · Monday, June 8</div>
+    <h1>Research <span class="q">SLAM</span></h1>
+    <div class="sub">By <b>2:00 today</b>, you'll make this room understand and care about a question you've never heard of — in <b>3 minutes</b>. No slides. Just you.</div>
+  </section>
+
+  <!-- 2 PICK -->
+  <section class="slide">
+    <div class="kicker"><span class="t">10:00 – 10:30</span> &nbsp; Pick your question</div>
+    <h1>Read the 5 posters.<br><span class="q">Rank your top 3.</span></h1>
+    <ol class="topics">
+      <li><span class="n">1</span> Is sewage actually liquid gold?</li>
+      <li><span class="n">2</span> Why must SLAC's machine be emptier than outer space?</li>
+      <li><span class="n">3</span> How do you aim a beam at a target thinner than a hair?</li>
+      <li><span class="n">4</span> Can you teach bone to grow onto plastic?</li>
+      <li><span class="n">5</span> How does a material decide to break?</li>
+    </ol>
+    <div class="pill">Drop your card in the box by 10:30 · you'll get one of your top 3</div>
+  </section>
+
+  <!-- 3 KICKOFF -->
+  <section class="slide dark">
+    <div class="kicker"><span class="t">11:00</span> &nbsp; Kickoff</div>
+    <h1>Here's the deal.</h1>
+    <div class="sub">You'll learn a real research question from a real SLAC scientist. Then you'll teach it back to this room in <b>3 minutes</b> — no slides, one prop, your own words. Friendly judges. <b>Every team wins something.</b></div>
+  </section>
+
+  <!-- 4 THE DAY -->
+  <section class="slide">
+    <div class="kicker">Today</div>
+    <h1>The <span class="q">day</span></h1>
+    <div class="timeline">
+      <span class="item"><span class="tm">11:00</span> Kickoff</span>
+      <span class="item"><span class="tm">11:10</span> Meet your scientist</span>
+      <span class="item"><span class="tm">12:00</span> Lunch</span>
+      <span class="item"><span class="tm">1:00</span> Three missions</span>
+      <span class="item"><span class="tm">2:00</span> The SLAM</span>
+      <span class="item"><span class="tm">2:40</span> Awards</span>
+    </div>
+  </section>
+
+  <!-- 5 RESEARCHER HOUR -->
+  <section class="slide">
+    <div class="kicker"><span class="t">11:10 – 12:00</span> &nbsp; Researcher Hour</div>
+    <h1>Meet your <span class="q">scientist</span></h1>
+    <div class="beats">
+      <div class="b"><span class="tm">11:10</span><span>They tell you what they're working on right now</span></div>
+      <div class="b"><span class="tm">11:15</span><span>You <b>read</b> a short page</span></div>
+      <div class="b"><span class="tm">11:20</span><span>You <b>watch</b> a short video</span></div>
+      <div class="b"><span class="tm">11:25</span><span>You <b>ask them anything</b></span></div>
+      <div class="b"><span class="tm">11:45</span><span>Teach it back — tell them what you understood</span></div>
+      <div class="b"><span class="tm">11:50</span><span>They help you <b>set up your math</b></span></div>
+    </div>
+    <div class="pill">Leave with 3 "WAIT, REALLY?" facts · 1 analogy · 2 questions</div>
+  </section>
+
+  <!-- 6 LUNCH -->
+  <section class="slide">
+    <div class="kicker"><span class="t">12:00 – 1:00</span></div>
+    <h1>Lunch 🍕</h1>
+    <div class="sub">Let it marinate. Your scientist might join you.</div>
+  </section>
+
+  <!-- 7 MISSIONS BRIEF -->
+  <section class="slide dark">
+    <div class="kicker"><span class="t">1:00</span> &nbsp; Three missions, one clock</div>
+    <h1>Now you <span class="q">build.</span></h1>
+    <div class="sub"><b>60 seconds: name your team.</b> Then three missions — finish each one and you can't fail. By 2:00 you'll have a number, an angle, and a rehearsal done.</div>
+  </section>
+
+  <!-- 8 MISSION 1 -->
+  <section class="slide dark">
+    <div class="kicker"><span class="t">1:05 – 1:20</span> &nbsp; Mission 1</div>
+    <h1>Do the <span class="q">math</span></h1>
+    <div class="deliver"><span class="lbl">Deliverable</span>YOUR NUMBER — computed by you, written BIG on an index card. Show a floater by 1:20.</div>
+  </section>
+
+  <!-- 9 MISSION 2 -->
+  <section class="slide dark">
+    <div class="kicker"><span class="t">1:20 – 1:45</span> &nbsp; Mission 2</div>
+    <h1>Build the <span class="q">3 minutes</span></h1>
+    <div class="deliver"><span class="lbl">Deliverable</span>Your ONE thing · who says what · a prop · your walk-up song to the MC by 1:45.</div>
+  </section>
+
+  <!-- 10 MISSION 3 -->
+  <section class="slide dark">
+    <div class="kicker"><span class="t">1:45 – 1:55</span> &nbsp; Mission 3</div>
+    <h1>Run <span class="q">it</span></h1>
+    <div class="deliver"><span class="lbl">Deliverable</span>One full run-through — out loud, timed, in front of a floater. No team performs cold.</div>
+  </section>
+
+  <!-- 11 SLAM RULES -->
+  <section class="slide">
+    <div class="kicker"><span class="t">2:00</span> &nbsp; The SLAM — the rules</div>
+    <h1>3 minutes. <span class="q">No slides.</span></h1>
+    <ul class="rules">
+      <li>3 minutes — the gong is the law</li>
+      <li>Everyone on the team speaks</li>
+      <li>One prop max · no slides, ever</li>
+      <li>Snaps between speakers, go loud at the end</li>
+    </ul>
+  </section>
+
+  <!-- 12 SLAM LIVE -->
+  <section class="slide dark">
+    <div class="kicker"><span class="t">2:00 – 2:30</span></div>
+    <h1>The <span class="q">SLAM</span></h1>
+    <div class="sub">Walk-up music. 3 minutes. The gong at 3:00. Make us care.</div>
+  </section>
+
+  <!-- 13 DELIBERATE -->
+  <section class="slide">
+    <div class="kicker"><span class="t">2:30 – 2:40</span></div>
+    <h1>Judges are <span class="q">deciding…</span></h1>
+    <div class="sub">While we wait: <b>what was the hardest part of today?</b></div>
+  </section>
+
+  <!-- 14 AWARDS -->
+  <section class="slide dark">
+    <div class="kicker"><span class="t">2:40 – 3:00</span></div>
+    <h1>Awards &amp; <span class="q">feedback</span></h1>
+    <div class="sub"><b>Five awards — every team gets one</b> — plus real feedback. The feedback is the prize.</div>
+    <div class="awards">
+      <span class="a">Top SLAM</span><span class="a">Most Curious Question</span><span class="a">Best Use of a Prop</span><span class="a">Wildest Analogy</span><span class="a">Crowd Favorite</span>
+    </div>
+  </section>
+
+</div>
+<div class="counter"></div>
+<div class="hint">→ / Space next · ← back · F fullscreen</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var i=0, counter=document.querySelector('.counter');
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i);});
+    counter.textContent=(i+1)+' / '+slides.length;
+    // counter color on dark slides
+    counter.style.color=slides[i].classList.contains('dark')?'rgba(255,255,255,0.6)':'#bbb';
+    document.querySelector('.brand').style.color=slides[i].classList.contains('dark')?'#fff':'#8B0000';
+    document.querySelector('.hint').style.color=slides[i].classList.contains('dark')?'rgba(255,255,255,0.5)':'#ccc';
+  }
+  function next(){show(i+1);} function prev(){show(i-1);}
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next();}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev();}
+    else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(slides.length-1);}
+    else if(e.key==='f'||e.key==='F'){ if(!document.fullscreenElement)document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+    else if(/^[0-9]$/.test(e.key)){ var n=parseInt(e.key,10); if(n>=1&&n<=slides.length)show(n-1); }
+  });
+  document.querySelector('.stage').addEventListener('click',function(e){ (e.clientX < window.innerWidth*0.25)?prev():next(); });
+  show(0);
+})();
+</script>
+</body>
+</html>
