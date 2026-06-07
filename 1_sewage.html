@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 · Is sewage actually liquid gold? — Research SLAM</title>
+<link rel="stylesheet" href="slam.css">
+</head>
+<body>
+<div class="topbar"><a class="home" href="index.html">◀ Research SLAM</a><span class="sep">·</span><span class="here">Topic 1 · Sewage</span></div>
+<main>
+  <div class="tophead">
+    <div class="badge">1</div>
+    <h1>Is sewage actually <span class="q">liquid gold</span>?</h1>
+  </div>
+
+  <div class="steplabel read">Read this (~4 min) — your scientist is right here, ask anything</div>
+  <div class="reading">
+    <p>Here's a strange fact about modern life: farmers spend <b>billions of dollars a year</b> buying nitrogen and phosphorus to put ON the land — while cities spend billions more removing the exact same chemicals FROM their water. We buy it, eat it, flush it, then pay to destroy it.</p>
+    <p>Most of the treasure is in urine. Pee is only about <b>1% of what flows into a wastewater plant</b>, but it carries most of the nitrogen and roughly half the phosphorus. Your body alone sends about <b>4 kilograms of nitrogen</b> down the toilet every year — a big bag of lawn fertilizer, per person, per year, thrown away.</p>
+    <p>Why does that matter? Making fresh nitrogen fertilizer from air (the "Haber-Bosch" process) burns enormous amounts of energy — one of the biggest industrial energy users on Earth. And phosphorus is <b>mined from rock that won't last forever</b>. Meanwhile the same elements stream under every city, every day, in the sewer.</p>
+    <p>So scientists — including the one at your table — build machines that pull the good stuff back out. One approach uses <b>electricity and special membranes</b> to grab ammonia (a nitrogen compound) straight out of wastewater and turn it into usable fertilizer. A Stanford-built prototype literally runs on sunlight. The nickname in the field? <b>"Liquid gold."</b></p>
+    <p>The catch: these machines slowly clog and wear out, and nobody fully understands what's happening inside while they run. That's where your scientist comes in: using <b>X-rays at SLAC to watch the machines work in real time</b>, from the inside. See the problem as it happens, and you can fix it.</p>
+
+    <div class="wow"><h3>Wait, really? (steal these for your Wow Hunt)</h3><ul>
+      <li>Urine = ~1% of wastewater but carries most of its nitrogen.</li>
+      <li>Making fertilizer from air uses around 1-2% of ALL the world's energy.</li>
+      <li>A Stanford prototype harvests fertilizer from pee using sunlight.</li>
+      <li>Phosphorus comes from mined rock — and good reserves are limited.</li>
+    </ul></div>
+    <div class="words"><h3>Words you'll hear</h3><p><b>Electrochemistry</b> — using electricity to drive chemical reactions. <b>Membrane</b> — a super-thin filter that lets some molecules through and blocks others. <b>Operando X-ray imaging</b> — X-raying a device while it runs, like a live MRI for machines.</p></div>
+  </div>
+
+  <div class="steplabel watch">Watch (~4 min)</div>
+  <div class="videowrap"><iframe src="https://www.youtube.com/embed/Hms2rE8B5as" title="Turning urine into GOLD — NSF Science Nation" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="videonote">"Turning urine into GOLD" — NSF Science Nation (3:49)</div>
+
+  <div class="steplabel math">Do the math — your number</div>
+  <div id="math-root"></div>
+</main>
+
+<script>
+window.TOPIC = { math: {
+  mission: "How many bags of fertilizer does your class flush down the toilet every year?",
+  setup: "Your scientist got you started this morning — finish the steps. (Self-check is built in.)",
+  given: [
+    "One person's urine ≈ <b>4 kg of nitrogen per year</b>",
+    "Your class: <b>11 students</b>",
+    "One 40-lb bag of lawn fertilizer ≈ <b>4.4 kg of nitrogen</b>"
+  ],
+  steps: [
+    { q: "Total nitrogen from the class per year:  4 × 11 = ?", answer: 44, tol: 0.5, unit: "kg", hint: "Multiply 4 by the number of students (11)." },
+    { q: "Bags of fertilizer that equals:  44 ÷ 4.4 = ?", answer: 10, tol: 0.4, unit: "bags", hint: "Divide your Step 1 answer by 4.4." }
+  ],
+  final: { say: 'Our class flushes about <span class="num">10 bags</span> of fertilizer a year.', next: "Write your number BIG on an index card." },
+  deeper: "Now all ~340 million Americans: 340,000,000 × 4 ÷ 4.4 ≈ <b>310 million bags</b> a year. Why isn't anyone collecting it?"
+}};
+</script>
+<script src="slam.js"></script>
+</body>
+</html>

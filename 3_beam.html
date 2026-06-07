@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3 · How do you aim a beam at a target thinner than a hair? — Research SLAM</title>
+<link rel="stylesheet" href="slam.css">
+</head>
+<body>
+<div class="topbar"><a class="home" href="index.html">◀ Research SLAM</a><span class="sep">·</span><span class="here">Topic 3 · Beam aiming</span></div>
+<main>
+  <div class="tophead">
+    <div class="badge">3</div>
+    <h1>How do you <span class="q">aim a beam</span> moving at 99.9999999% the speed of light at a target thinner than a hair?</h1>
+  </div>
+
+  <div class="steplabel read">Read this (~4 min) — your scientist is right here, ask anything</div>
+  <div class="reading">
+    <p>SLAC's electron beam is invisible, thinner than a human hair, and crosses the 2-mile machine in about <b>10 millionths of a second</b>. You can't see it, touch it, or put a wall in front of it. And your job is to steer it — to land it on targets thinner than a hair, all day, without missing.</p>
+    <p>You can't steer it with anything physical. The only steering wheel that works is <b>magnetism</b>. A charged particle moving through a magnetic field gets pushed sideways (physicists call it the <b>Lorentz force</b>). So the machine is lined with hundreds of magnets: <b>dipole</b> magnets bend the beam like a curve in the road, and <b>quadrupole</b> magnets squeeze it like a lens focuses light. An accelerator is basically a 2-mile-long optical instrument — except the "light" is matter and the "lenses" are magnets.</p>
+    <p>Here's the part that breaks people's brains. The beam moves at 99.9999999% the speed of light — and the interesting thing isn't the speed, it's the <b>energy</b>. Einstein's relativity says energy grows with a number called <b>gamma (γ)</b>: at this speed γ ≈ <b>22,000</b>, meaning each electron carries about 22,000 times its resting energy. Add one more 9 to the speed and it barely goes faster — but the energy <b>skyrockets</b>. That's why the machine is 2 miles long: not to make electrons faster, but to pump them fuller of energy.</p>
+    <p>Your scientist works with these magnets — and is literally writing a lecture about them. Ask how you "see" an invisible beam well enough to aim it. (The answer: sensors that feel the beam pass, plus constant automatic correction thousands of times a second.)</p>
+    <div class="wow"><h3>Wait, really? (steal these for your Wow Hunt)</h3><ul>
+      <li>The aim is like hitting a soda can in Chicago — from San Francisco.</li>
+      <li>The beam crosses 2 miles in ~10 millionths of a second.</li>
+      <li>γ ≈ 22,000: each electron carries ~22,000× its resting energy.</li>
+      <li>Magnets focus particle beams exactly the way glass lenses focus light.</li>
+    </ul></div>
+    <div class="words"><h3>Words you'll hear</h3><p><b>Lorentz force</b> — the sideways push a magnetic field gives a moving charged particle. <b>Quadrupole</b> — a 4-pole magnet that focuses the beam like a lens. <b>Gamma (γ)</b> — relativity's energy multiplier; huge γ = huge energy.</p></div>
+  </div>
+
+  <div class="steplabel watch">Watch (~5 min)</div>
+  <div class="videowrap"><iframe src="https://www.youtube.com/embed/pgaG7f96SKM" title="X-ray Laser Animated Fly-through — SLAC" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="videonote">"X-ray Laser Animated Fly-through" — SLAC (5:28) — a ride down the actual machine.</div>
+
+  <div class="steplabel math">Do the math — your number</div>
+  <div id="math-root"></div>
+</main>
+
+<script>
+window.TOPIC = { math: {
+  mission: "SLAC aims its beam to hair-width precision over 2 miles. How good is that aim, in human terms?",
+  setup: "Your scientist got you started this morning — finish the steps. The numbers get tiny; that's the point. Calculator tips are in the hints.",
+  given: [
+    "A human hair ≈ <b>0.00007 m</b> wide (70 millionths of a meter)",
+    "The linac ≈ <b>3,200 m</b> long (2 miles)",
+    "A soda can ≈ <b>0.066 m</b> wide"
+  ],
+  steps: [
+    { q: "Aiming angle = 0.00007 ÷ 3200.  <i>Type what the calculator shows — like</i> <b>2.2E-8</b> <i>or</i> <b>0.000000022</b>:", answer: 2.1875e-8, rel: 0.1, unit: "", hint: "Type 0.00007 ÷ 3200. The screen's 2.2E-8 means 0.000000022 — a tiny angle." },
+    { q: "From how far could you hit a soda can with that aim?  0.066 ÷ your angle = ?  <i>(answer in meters — about 3 million)</i>", answer: 3.0e6, rel: 0.15, unit: "m", hint: "Divide 0.066 by your Step 1 angle. You'll get about 3,000,000 m." },
+    { q: "Convert to kilometers:  your meters ÷ 1000 = ?", answer: 3000, rel: 0.1, unit: "km", hint: "Just divide the meters by 1000." }
+  ],
+  final: { say: 'Our aim is like hitting a soda can in <span class="num">Chicago — from San Francisco</span> (about 3,000 km), with something invisible.', next: "Write your number BIG on an index card." },
+  deeper: "γ (gamma) tells you how relativistic the beam is: γ = 1 ÷ √(1 − 0.999999999²) ≈ 22,000, and energy is E = γmc². Ask your scientist what happens to γ when you add one more 9 to the speed."
+}};
+</script>
+<script src="slam.js"></script>
+</body>
+</html>

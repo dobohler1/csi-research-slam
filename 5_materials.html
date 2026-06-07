@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5 · How does a material decide to break? — Research SLAM</title>
+<link rel="stylesheet" href="slam.css">
+</head>
+<body>
+<div class="topbar"><a class="home" href="index.html">◀ Research SLAM</a><span class="sep">·</span><span class="here">Topic 5 · How materials break</span></div>
+<main>
+  <div class="tophead">
+    <div class="badge">5</div>
+    <h1>How does a material <span class="q">decide to break</span> — and can we catch it in the act?</h1>
+  </div>
+
+  <div class="steplabel read">Read this (~4 min) — your scientist is right here, ask anything</div>
+  <div class="reading">
+    <p>Half of a modern airliner — including most of the body of a Boeing 787 — is made of what engineers half-jokingly call <b>"fabric and glue"</b>: carbon-fiber composite, woven sheets of carbon thread soaked in hardened resin. It sounds flimsy. It isn't. Pound for pound, carbon composite beats steel roughly <b>8 to 1</b> on strength — which is why switching from aluminum saves an airliner about 20% of its weight and tens of thousands of rivets.</p>
+    <p>But composites come with a deal: they're stronger, <b>and harder to predict</b>. A metal usually fails politely — it bends and stretches and warns you. A composite is a layered team of materials, and it can fail dozens of ways: a fiber snaps here, layers peel apart there (engineers call it <b>delamination</b>), tiny cracks wander through the resin — all hidden inside, until enough small failures gang up and the part lets go.</p>
+    <p>So the real research question isn't "how strong is it?" — it's <b>"how does it decide to break?"</b> What's the chain of tiny events between "fine" and "failed"? If you could watch that chain happen, you could design materials that interrupt it — and predict honestly when a part needs replacing.</p>
+    <p>That's what your scientist does: studies how composite materials fail, and how to <b>catch failure in the act</b>. At a place like SLAC you can load a material until it starts to crack <b>while X-raying it</b> — watching damage being born deep inside, frame by frame, like a medical scan of a material having the worst day of its life. Every flight you'll ever take is safer because someone does this.</p>
+    <div class="wow"><h3>Wait, really? (steal these for your Wow Hunt)</h3><ul>
+      <li>Modern airliners are ~50% "fabric and glue" by weight.</li>
+      <li>Carbon composite beats steel ~8-to-1, pound for pound.</li>
+      <li>Composites can fail invisibly, deep inside, while the surface looks perfect.</li>
+      <li>X-rays can film a crack being born, frame by frame.</li>
+    </ul></div>
+    <div class="words"><h3>Words you'll hear</h3><p><b>Composite</b> — a material made of two materials working as a team (fibers + resin). <b>Delamination</b> — layers of a composite peeling apart inside. <b>In-situ imaging</b> — X-raying a material WHILE it's being loaded or broken.</p></div>
+  </div>
+
+  <div class="steplabel watch">Watch (~3 min)</div>
+  <div class="videowrap"><iframe src="https://www.youtube.com/embed/RTsHcWdr3gI" title="Why Are Carbon Fiber Composites So Strong In Design? — How Things Break" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="videonote">"Why Are Carbon Fiber Composites So Strong In Design?" — How Things Break (3:27). Your scientist may also show his own ~1-min clips of things breaking.</div>
+
+  <div class="steplabel math">Do the math — your number</div>
+  <div id="math-root"></div>
+</main>
+
+<script>
+window.TOPIC = { math: {
+  mission: "Why are modern airplanes \"fabric and glue\" instead of steel? Strength per weight.",
+  setup: "Your scientist got you started this morning — finish the steps. (Self-check is built in.)",
+  given: [
+    "Carbon-fiber composite: strength ≈ <b>800 MPa</b>, density ≈ <b>1.6 g/cm³</b>",
+    "Steel: strength ≈ <b>500 MPa</b>, density ≈ <b>7.8 g/cm³</b>"
+  ],
+  steps: [
+    { q: "Composite strength-per-weight:  800 ÷ 1.6 = ?", answer: 500, tol: 5, unit: "", hint: "Divide composite strength (800) by its density (1.6)." },
+    { q: "Steel strength-per-weight:  500 ÷ 7.8 = ?", answer: 64, tol: 4, unit: "", hint: "Divide steel strength (500) by its density (7.8) — about 64." },
+    { q: "How many times better is the composite?  500 ÷ 64 = ?", answer: 7.8, tol: 1.2, unit: "× better", hint: "Divide your Step 1 answer by your Step 2 answer — about 8." }
+  ],
+  final: { say: 'Fabric and glue beats steel about <span class="num">8 to one</span>, pound for pound — as long as you know when it\'s going to break. Nobody fully does. That\'s the job.', next: "Write your number BIG on an index card." },
+  deeper: "If composite is that much better, why are bridges still steel? (Cost, repair — and the hardest part, predicting failure. Ask your scientist.)"
+}};
+</script>
+<script src="slam.js"></script>
+</body>
+</html>

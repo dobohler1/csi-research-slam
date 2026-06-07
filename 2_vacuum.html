@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 · Why must SLAC's machine be emptier than outer space? — Research SLAM</title>
+<link rel="stylesheet" href="slam.css">
+</head>
+<body>
+<div class="topbar"><a class="home" href="index.html">◀ Research SLAM</a><span class="sep">·</span><span class="here">Topic 2 · Vacuum</span></div>
+<main>
+  <div class="tophead">
+    <div class="badge">2</div>
+    <h1>Why does SLAC's 2-mile machine have to be <span class="q">emptier than outer space</span>?</h1>
+  </div>
+
+  <div class="steplabel read">Read this (~4 min) — written by your SLAC scientist. Ask them anything.</div>
+  <div class="reading">
+    <p><b>Did you know?</b> The vacuum inside a modern particle accelerator is often better than the vacuum in outer space near Earth.</p>
+    <p><b>Imagine a race car in a snowstorm.</b> Picture driving a Formula 1 car through a snowstorm. Every snowflake that hits the car slows it down and pushes it off course. Particle beams face the same challenge. Even though air looks empty, it's full of billions of molecules. When particles traveling near the speed of light slam into those molecules, the beam loses energy and quality.</p>
+    <p><b>What is a vacuum?</b> A vacuum is a space with very few gas molecules. Scientists use pumps to remove almost all the air from the beam pipe, creating a clear path for electrons or protons to travel without interference.</p>
+    <p><b>Why is vacuum so important?</b></p>
+    <p>• Particles can travel kilometers without hitting a gas molecule.<br>• The beam stays focused and stable.<br>• Less radiation from unwanted beam losses.<br>• Sensitive equipment stays protected.<br>• Experiments give more accurate results.</p>
+    <p><b>How good is the vacuum?</b> The air around you holds roughly <b>25,000,000,000,000,000,000 molecules per cubic centimeter</b>. Inside some accelerator beam pipes, the pressure is more than a <b>trillion times lower</b> than the air's.</p>
+    <div class="words"><h3>How empty?</h3><p>Classroom air — <b>very dense</b>. Outer space near Earth — <b>extremely thin</b>. Accelerator vacuum — <b>often even better than space</b>.</p></div>
+    <p><b>Real examples.</b> Scientists at SLAC's Linac Coherent Light Source — and at CERN's Large Hadron Collider — rely on ultra-high vacuum systems. Without vacuum technology, these machines couldn't accelerate particles or make powerful X-ray beams.</p>
+    <p><b>Careers in vacuum science.</b> Vacuum scientists and engineers design the pumps, chambers, sensors, and cleaning steps that make discovery possible — for particle physics, fusion energy, computer-chip manufacturing, space exploration, and medicine.</p>
+    <div class="wow"><h3>Think like an engineer!</h3><ul>
+      <li>What would happen if someone opened a valve and let air into a running accelerator?</li>
+      <li>How long would it take to pump it back down to vacuum?</li>
+    </ul></div>
+  </div>
+
+  <div class="steplabel watch">Watch (~1 min, then the longer one if you want)</div>
+  <div class="videowrap"><iframe src="https://www.youtube.com/embed/-9RMLu5Ij0M" title="This Vacuum System is Enabling Scientific Discovery — Brookhaven Lab" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="videonote">"This Vacuum System is Enabling Scientific Discovery" — Brookhaven Lab (0:55). Want more? <a href="https://www.youtube.com/watch?v=KoTdC3xfDwo" target="_blank" rel="noopener">The LHC beam pipe explained</a> (4:52).</div>
+
+  <div class="steplabel math">Do the math — your number</div>
+  <div id="math-root"></div>
+</main>
+
+<script>
+window.TOPIC = { math: {
+  mission: "Is the beam pipe at SLAC really emptier than outer space?",
+  setup: "Your scientist got you started this morning — finish the steps. Use your calculator's EE / EXP button for the big numbers.",
+  given: [
+    "Air in this room ≈ <b>25,000,000,000,000,000,000</b> molecules per cm³ (2.5 × 10¹⁹)",
+    "Inside SLAC's beam pipe ≈ <b>30,000,000</b> per cm³ (3 × 10⁷)",
+    "Space where the ISS orbits ≈ <b>100,000,000</b> per cm³ (1 × 10⁸)"
+  ],
+  steps: [
+    { q: "How many times emptier than this room?  room air ÷ beam pipe.  <i>Type what your calculator shows — like</i> <b>8.3E11</b> <i>or</i> <b>830000000000</b>:", answer: 8.33e11, rel: 0.15, unit: "times", hint: "On a phone: type 2.5 EE 19 ÷ 3 EE 7. The screen's 8.3E11 means 830 billion." },
+    { q: "Emptier than space at the ISS?  ISS ÷ beam pipe = 100,000,000 ÷ 30,000,000 = ?", answer: 3.33, tol: 0.8, unit: "times", hint: "Just 100,000,000 ÷ 30,000,000 — a small whole-ish number." }
+  ],
+  final: { say: 'There\'s a 2-mile pipe right here at SLAC that\'s about <span class="num">800 billion times</span> emptier than this room — and even emptier than space where the astronauts fly.', next: "Write your number BIG on an index card." },
+  deeper: "Why does the beam need that? What happens if a single air molecule gets in the way of a particle moving at almost the speed of light?"
+}};
+</script>
+<script src="slam.js"></script>
+</body>
+</html>

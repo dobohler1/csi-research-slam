@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4 · Can you teach bone to grow onto plastic? — Research SLAM</title>
+<link rel="stylesheet" href="slam.css">
+</head>
+<body>
+<div class="topbar"><a class="home" href="index.html">◀ Research SLAM</a><span class="sep">·</span><span class="here">Topic 4 · Bone on plastic</span></div>
+<main>
+  <div class="tophead">
+    <div class="badge">4</div>
+    <h1>Can you teach <span class="q">bone</span> to grow onto <span class="q">plastic</span>?</h1>
+  </div>
+
+  <div class="steplabel read">Read this (~4 min) — your scientist is right here, ask anything</div>
+  <div class="reading">
+    <p>Every year, surgeons fuse damaged spines using small implants called <b>cages</b> — spacers that hold vertebrae in place while bone grows through and locks everything together. Many cages are made of a remarkable plastic called <b>PEEK</b>: strong enough to live in a spine for decades, invisible to X-rays (so doctors can watch the healing around it), and — crucially — about as stiff as bone itself. Titanium is far stiffer than bone, and that mismatch can weaken the surrounding bone over time. PEEK flexes more like the real thing.</p>
+    <p>But PEEK has a problem: <b>bone doesn't naturally stick to it</b>. The body treats smooth plastic as a foreign object and wraps it in scar-like tissue instead of welding it in with new bone. An implant that never truly attaches can shift and loosen. The dream is <b>osseointegration</b> — living bone growing directly onto and into the implant, gripping it like a tree root grips rock.</p>
+    <p>The fix isn't changing the plastic — it's changing the <b>surface</b>. Bone cells "read" a surface at their own scale, judging textures a thousand times smaller than a hair. Make PEEK <b>porous</b> — full of tiny connected holes, like the spongy inside of real bone — and tune its <b>surface chemistry</b>, and suddenly bone cells move in, anchor, and start building. In lab studies, porous PEEK roughly <b>doubled</b> the strength of the bone-implant grip versus smooth PEEK.</p>
+    <p>And here's the math of why pores matter so much: cut a cube into 1,000 mini-cubes and you get <b>10× the surface area from the same material</b> — 10× more wall for bone cells to grab. (You'll do exactly that below.) Your scientist studied precisely this: how changing PEEK's surface chemistry and porosity convinces bone to call plastic home.</p>
+    <div class="wow"><h3>Wait, really? (steal these for your Wow Hunt)</h3><ul>
+      <li>Bone cells judge surfaces at a scale ~1,000× smaller than a hair.</li>
+      <li>PEEK is about as stiff as bone — titanium is ~10-30× stiffer.</li>
+      <li>Porous PEEK ≈ 2× the holding strength of smooth PEEK in lab tests.</li>
+      <li>Smooth implants get wrapped in scar tissue — the body's "return to sender."</li>
+    </ul></div>
+    <div class="words"><h3>Words you'll hear</h3><p><b>PEEK</b> — polyetheretherketone, a tough medical-grade plastic. <b>Osseointegration</b> — living bone bonding directly to an implant. <b>Porosity</b> — how full of tiny holes a material is; more pores = more surface for cells.</p></div>
+  </div>
+
+  <div class="steplabel watch">Watch (~3 min)</div>
+  <div class="videowrap"><iframe src="https://www.youtube.com/embed/F7vGdP__cFQ" title="How Osseointegration Makes Implants Work — StarFish Medical" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="videonote">"How Osseointegration Makes Implants Work" — StarFish Medical (2:40)</div>
+
+  <div class="steplabel math">Do the math — your number</div>
+  <div id="math-root"></div>
+</main>
+
+<script>
+window.TOPIC = { math: {
+  mission: "Why does making a material porous change everything? Find out with a cube.",
+  setup: "Your scientist got you started this morning — finish the steps. (Self-check is built in.)",
+  given: [
+    "A solid cube, 1 cm on each side: surface area = 6 sides × 1 cm² = <b>6 cm²</b>",
+    "Cut it into mini-cubes <b>1 mm</b> (0.1 cm) on each side",
+    "Each tiny mini-cube has a surface of <b>0.06 cm²</b> (that's 6 × 0.1 × 0.1)"
+  ],
+  steps: [
+    { q: "How many mini-cubes do you get?  10 × 10 × 10 = ?", answer: 1000, tol: 0, unit: "cubes", hint: "10 across × 10 down × 10 deep." },
+    { q: "Total surface of all of them:  1000 × 0.06 = ?", answer: 60, tol: 1, unit: "cm²", hint: "Multiply the number of cubes by 0.06." },
+    { q: "How many times MORE surface, same material?  your total ÷ 6 = ?", answer: 10, tol: 0.5, unit: "× more", hint: "Divide your total surface by the original 6 cm²." }
+  ],
+  final: { say: 'Same plastic, <span class="num">10× more surface</span> for bone cells to grab. That\'s why porosity is the whole game.', next: "Write your number BIG on an index card." },
+  deeper: "Now cut to 0.1 mm cubes — that's another 10×, so 100× the surface. Why might a cell care about texture at its own tiny size scale?"
+}};
+</script>
+<script src="slam.js"></script>
+</body>
+</html>
