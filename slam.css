@@ -132,3 +132,7 @@ a{color:var(--accent);}
   main{max-width:100%;}
   .mathcard,.wow,.words{break-inside:avoid;}
 }
+
+/* poster image atop each topic page */
+.poster-img{width:100%;max-width:540px;display:block;margin:1.4rem auto 0.4rem;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.18);}
+.poster-cap{text-align:center;font-size:.85rem;color:var(--muted);margin-bottom:.4rem;}
